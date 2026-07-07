@@ -1,3 +1,13 @@
+---
+title: SmartLender
+emoji: 🏦
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # Smart Lender
 
 Machine learning-powered web application to predict loan applicant creditworthiness using Decision Tree, Random Forest, KNN, and XGBoost classifiers.
