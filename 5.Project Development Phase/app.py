@@ -1,6 +1,5 @@
 import numpy as np
 import joblib
-import pandas
 import os
 from flask import Flask, request, render_template
 
@@ -25,14 +24,9 @@ def submit():
     # reading the inputs given by the user
     input_feature = [float(x) for x in request.form.values()]
     input_feature = np.array(input_feature).reshape(1, -1)
-    names = ['Gender', 'Married', 'Dependents', 'Education', 'Self_Employed',
-              'ApplicantIncome', 'CoapplicantIncome', 'LoanAmount',
-              'Loan_Amount_Term', 'Credit_History', 'Property_Area']
-    data = pandas.DataFrame(input_feature, columns=names)
 
     # scaling the input using the same scaler fit during training
-    data_scaled = scale.transform(data)
-    data_scaled = pandas.DataFrame(data_scaled, columns=names)
+    data_scaled = scale.transform(input_feature)
 
     # predictions using the loaded model file
     prediction = model.predict(data_scaled)
